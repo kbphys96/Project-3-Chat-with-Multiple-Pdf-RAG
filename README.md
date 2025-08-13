@@ -1,85 +1,84 @@
-# 📄 Chat with Multiple PDFs using Google Gemini API
+# Chat with Multiple PDFs using Google Gemini API (📄)
 
-This project allows you to **upload multiple PDF documents** and **ask questions** about their content.  
-It uses **Google Gemini API** for text understanding and **FAISS** for semantic search to retrieve relevant chunks from the PDFs.  
-The app is built with **Streamlit** for an interactive UI.
+Upload multiple PDFs and ask questions about their content. The app uses Google’s Gemini API for understanding, FAISS for semantic search, and Streamlit for a clean, interactive UI.
 
----
+## Features (🚀)
+- Upload one or multiple PDF files
+- Automatically extract text from all PDFs
+- Split text into chunks for efficient retrieval
+- Create embeddings with Google Generative AI (e.g., text-embedding-004)
+- Store and search embeddings with FAISS
+- Ask natural-language questions; if the answer isn’t in your PDFs, the app replies “No”
 
-## 🚀 Features
-- Upload one or multiple PDF files.
-- Extract text automatically from all PDFs.
-- Split text into chunks for efficient search.
-- Embed text using **Google Generative AI embeddings**.
-- Store and retrieve embeddings with **FAISS**.
-- Ask natural language questions — if the answer is not in the PDF, the app replies with **"No"**.
+## Tech Stack (🛠️)
+- Python 3.10+
+- Streamlit (Web UI)
+- PyPDF2 (PDF text extraction)
+- LangChain (chaining & prompts)
+- Google Generative AI (Gemini for LLM and embeddings)
+- FAISS (vector search)
+- python-dotenv (environment variables)
 
----
-
-## 🛠️ Tech Stack
-- **Python 3.10+**
-- [Streamlit](https://streamlit.io/) - Web UI
-- [PyPDF2](https://pypi.org/project/PyPDF2/) - PDF text extraction
-- [LangChain](https://www.langchain.com/) - Chaining & prompt handling
-- [Google Generative AI](https://cloud.google.com/vertex-ai/generative-ai) - Embeddings & LLM
-- [FAISS](https://github.com/facebookresearch/faiss) - Vector search
-- [python-dotenv](https://pypi.org/project/python-dotenv/) - Environment variables
-
----
-
-## 📂 Project Structure
+## Project Structure (📂)
+```
 .
-├── app.py # Main Streamlit app
-├── requirements.txt # Python dependencies
-├── README.md # Project documentation
-└── .env # API key storage (not pushed to GitHub)
+├── app.py              # Main Streamlit app
+├── requirements.txt    # Python dependencies
+├── README.md           # Project documentation
+├── .env                # API key storage (not committed)
+└── faiss_index/        # Local FAISS index (generated at runtime)
+```
 
-
----
-
-## 📦 Installation
-1️⃣ Clone the repository:
-```bash
+## Installation (📦)
+1) Clone the repository
+```
 git clone https://github.com/yourusername/chat-with-pdf.git
 cd chat-with-pdf
-2️⃣ Create & activate a virtual environment:
+```
 
+2) Create & activate a virtual environment
+```
 python -m venv venv
 # On Windows
 venv\Scripts\activate
-# On Mac/Linux
+# On macOS/Linux
 source venv/bin/activate
-3️⃣ Install dependencies:
+```
 
+3) Install dependencies
+```
 pip install -r requirements.txt
-4️⃣ Create a .env file and add your Google API Key:
+```
 
+4) Create a .env file and add your Google API key
+```
 GOOGLE_API_KEY=your_google_api_key_here
-▶️ Usage
+```
+- Get a key from Google AI Studio: https://aistudio.google.com/app/apikey
+- Ensure the Gemini API is enabled for your account/project
+
+## Usage (▶️)
 Run the Streamlit app:
-
+```
 streamlit run app.py
-Steps inside the app:
+```
 
-Upload one or more PDFs from the sidebar.
+Then:
+1) Upload one or more PDFs from the sidebar
+2) Click “Submit and Process” to extract, chunk, embed, and index
+3) Ask questions in the input field
+4) Receive answers based only on your uploaded PDFs (or “No” if not found)
 
-Click "Submit and Process" to extract & store text.
+## Example (📌)
+- Question: “What is the total invoice amount in document 1?”
+- Reply: “₹25,000” (if present in the PDFs)
+- Reply: “No” (if not found in the PDFs)
 
-Ask questions in the text input field.
+## Notes (⚠️)
+- Gemini/Generative AI must be enabled for your API key
+- The FAISS index is saved locally in faiss_index/
+- Large PDFs may take longer to process
+- Do not commit your .env file to version control
 
-Get answers based only on your uploaded PDFs.
-
-📌 Example Prompt
-Question: "What is the total invoice amount in document 1?"
-Reply: "₹25,000" (If present in PDF)
-Reply: "No" (If not found in PDF)
-
-⚠️ Notes
-Make sure your Google Cloud account has Generative AI API enabled.
-
-FAISS index is stored locally in the folder faiss_index/.
-
-For large PDFs, processing time might take a few seconds.
-
-📜 License
-This project is licensed under the MIT License — feel free to use and modify.
+## License (📜)
+MIT License — free to use and modify.
