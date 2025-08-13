@@ -34,9 +34,6 @@ The app is built with **Streamlit** for an interactive UI.
 ├── README.md # Project documentation
 └── .env # API key storage (not pushed to GitHub)
 
-yaml
-Copy
-Edit
 
 ---
 
@@ -47,9 +44,6 @@ git clone https://github.com/yourusername/chat-with-pdf.git
 cd chat-with-pdf
 2️⃣ Create & activate a virtual environment:
 
-bash
-Copy
-Edit
 python -m venv venv
 # On Windows
 venv\Scripts\activate
@@ -57,22 +51,13 @@ venv\Scripts\activate
 source venv/bin/activate
 3️⃣ Install dependencies:
 
-bash
-Copy
-Edit
 pip install -r requirements.txt
 4️⃣ Create a .env file and add your Google API Key:
 
-env
-Copy
-Edit
 GOOGLE_API_KEY=your_google_api_key_here
 ▶️ Usage
 Run the Streamlit app:
 
-bash
-Copy
-Edit
 streamlit run app.py
 Steps inside the app:
 
